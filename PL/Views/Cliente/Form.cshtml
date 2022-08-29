@@ -1,0 +1,138 @@
+﻿@model ML.Cliente
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-ml-12">
+                <h3>@ViewBag.Titulo</h3>
+                <h3>Ingresa los datos</h3>
+                <hr />
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Form", "Cliente", FormMethod.Post, new { enctype = "multipart/from-data" }))
+             {
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdCliente, new { @class = "control-label col-md-2 hidden" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.IdCliente, new { @class = "form-control hidden" })
+                            @Html.ValidationMessageFor(model => model.IdCliente)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Nombre)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ApellidoPaterno, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApellidoPaterno)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ApellidoMaterno, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ApellidoMaterno)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EstadoCivil, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.EstadoCivil, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EstadoCivil)
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+                <div class="row">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Género, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Género, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Género)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaDeNacimiento, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.FechaDeNacimiento, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.FechaDeNacimiento)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CURP, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.CURP, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CURP)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RFC, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.RFC, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RFC)
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telefono, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Telefono)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <input type="submit" value="Guardar" class="btn btn-success" />
+                            @Html.ActionLink("Regresar", "GetAll", "Cliente", htmlAttributes: new { @class = "btn btn-danger" })
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+             </div>
+
+             }
+        </div>
+
+
+
+    </div>
+
+</div>

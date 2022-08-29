@@ -1,0 +1,280 @@
+﻿@model ML.Cliente
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h2>Cliente</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Seleccione un cliente para editarla o el boton + para agregar un nuevo cliente...</h5>
+            <hr />
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Form", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row g-3" id="fuImage" style="display:none;">
+
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdCliente, new { @class = "control-label col-md-2 hidden" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.IdCliente, new { @class = "form-control hidden", @id = "txtIdCliente" })
+                            @Html.ValidationMessageFor(model => model.IdCliente)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre" })
+                            @Html.ValidationMessageFor(model => model.Nombre)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ApellidoPaterno, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @id = "txtApellidoPaterno" })
+                            @Html.ValidationMessageFor(model => model.ApellidoPaterno)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ApellidoMaterno, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", @id = "txtApellidoMaterno" })
+                            @Html.ValidationMessageFor(model => model.ApellidoMaterno)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EstadoCivil, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.EstadoCivil, new { @class = "form-control", @id = "txtEstadoCivil" })
+                            @Html.ValidationMessageFor(model => model.EstadoCivil)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Género, new { @class = "control-label col-md-2"  })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Género, new { @class = "form-control", @id = "txtGenero" })
+                            @Html.ValidationMessageFor(model => model.Género)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FechaDeNacimiento, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.FechaDeNacimiento, new { @class = "form-control", @id = "txtFechaDeNacimiento" })
+                            @Html.ValidationMessageFor(model => model.FechaDeNacimiento)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CURP, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.CURP, new { @class = "form-control", @id = "txtCURP" })
+                            @Html.ValidationMessageFor(model => model.CURP)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RFC, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.RFC, new { @class = "form-control", @id = "txtRFC" })
+                            @Html.ValidationMessageFor(model => model.RFC)
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Telefono, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", @id = "txtTelefono" })
+                            @Html.ValidationMessageFor(model => model.Telefono)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                        <div class="col-md-3">
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "txtEmail" })
+                            @Html.ValidationMessageFor(model => model.Email)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">
+                            <input type="submit" value="Guardar" class="btn btn-success" />
+                            @Html.ActionLink("Regresar", "GetAll", "Cliente", htmlAttributes: new { @class = "btn btn-danger" })
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+        <br />
+    }
+
+
+
+
+    <div class="row">
+        <div style="float:right;">
+            
+            <a><input type="submit" value="+" class="btn btn-success col-md-12" id="add" /></a>
+            @*@Html.ActionLink("+", "Form", "Cliente", htmlAttributes: new { @class = "btn btn-success" })*@
+
+        </div>
+        @if (Model.Clientes == null)
+        {
+            <div class="p-3 mb-2 bg-danger text-white">Aun no hay clientes registrados</div>
+        }
+        else
+        {
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <td class="text-center">Editar</td>
+
+                        <td class="hidden">IdCliente</td>
+                        <td class="text-center">Nombre</td>
+                        <td class="text-center">EstadoCivil</td>
+                        <td class="text-center">Género</td>
+                        <td class="text-center">FechaDeNacimiento</td>
+                        <td class="text-center">CURP</td>
+                        <td class="text-center">RFC</td>
+                        <td class="text-center">Telefono</td>
+                        <td class="text-center">Email</td>
+                        <td class="text-center">Borrar</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (ML.Cliente cliente in Model.Clientes)
+                    {
+                    <tr>
+
+                        @*<td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Cliente", new { IdCliente = cliente.IdCliente})"></a></td>*@
+
+                        <td class="text-center"><a class="glyphicon glyphicon-edit" href="#" id="update" onclick="GetById(@cliente.IdCliente)"> </a> </td>
+
+                        <td class="hidden">@cliente.IdCliente</td>
+
+                        <td class="text-center">@cliente.Nombre @cliente.ApellidoPaterno @cliente.ApellidoMaterno</td>
+                        <td class="text-center">@cliente.EstadoCivil</td>
+                        <td class="text-center">@cliente.Género</td>
+                        <td class="text-center">@cliente.FechaDeNacimiento.ToString()</td>
+                        <td class="text-center">@cliente.CURP</td>
+                        <td class="text-center">@cliente.RFC</td>
+                        <td class="text-center">@cliente.Telefono</td>
+                        <td class="text-center">@cliente.Email</td>
+
+
+                        <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Cliente", new { IdCliente = cliente.IdCliente})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+
+
+
+
+</div>
+
+
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script type="text/javascript">
+
+        $('#add').click(function () {
+            $('#fuImage').toggle('slow', function () {
+            });
+        });
+
+        //function GetById() {
+        //    $.ajax({
+                
+        //        success: function (result) {
+        //            $('#update').click(function () {
+        //                $('#fuImage').toggle('slow', function () {
+        //                });
+        //            });
+        //        },
+        //    });
+
+        //}
+        function GetById(IdCliente) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:5581/Cliente/Form/?IdCliente=' + IdCliente,
+                success: function (cliente) {
+                    $('#txtIdCliente').val(cliente.IdCliente);
+                    $('#txtNombre').val(cliente.Nombre);
+                    $('#txtApellidoPaterno').val(cliente.ApellidoPaterno);
+                    $('#txtApellidoMaterno').val(cliente.ApellidoMaterno);
+                    $('#txtEstadoCivil').val(cliente.EstadoCivil);
+                    $('#txtGenero').val(cliente.Género);
+                    $('#txtFechaDeNacimiento').val(cliente.FechaDeNacimiento);
+                    $('#txtCURP').val(cliente.CURP);
+                    $('#txtRFC').val(cliente.RFC);
+                    $('#txtTelefono').val(cliente.Telefono);
+                    $('#txtEmail').val(cliente.Email);
+
+                    $('#fuImage').toggle('slow', function () {
+                     });
+                   
+                },
+                error: function (result) {
+                    alert('Error en la consulta.' + result.responseJSON.ErrorMessage);
+                }
+
+
+            });
+
+        } 
+
+        function InitializeControls() {
+
+            $('#txtIdCliente').val('');
+            $('#txtNombre').val('');
+            $('#txtApellidoPaterno').val('');
+            $('#txtApellidoMaterno').val('');
+            $('#txtEstadoCivil').val('');
+            $('#txtGenero').val('');
+            $('#txtFechaDeNacimiento').val('');
+            $('#txtCURP').val('');
+            $('#txtRFC').val('');
+            $('#txtTelefono').val('');
+            $('#txtEmail').val('');
+
+            $('#fuImage').toggle('slow', function () {
+            });
+
+        }
+
+        
+
+    </script>
+}
